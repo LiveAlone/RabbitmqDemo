@@ -1,4 +1,4 @@
-package org.yqj.boot.demo;
+package org.yqj.rabbitmq.demo;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
