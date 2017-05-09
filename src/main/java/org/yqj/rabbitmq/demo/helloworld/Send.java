@@ -18,6 +18,7 @@ public class Send {
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
+        connectionFactory.setPort(5672);
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
 

@@ -7,7 +7,4 @@ package org.yqj.rabbitmq.demo.document;
  * Descirbe:
  */
 public class MainClass {
-    public static void main(String[] args) {
-        System.out.println("this is basic test document in rabbitmq client");
-    }
 }
