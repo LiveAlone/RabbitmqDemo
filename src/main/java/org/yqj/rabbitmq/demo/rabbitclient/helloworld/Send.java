@@ -1,8 +1,9 @@
-package org.yqj.rabbitmq.demo.helloworld;
+package org.yqj.rabbitmq.demo.rabbitclient.helloworld;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.yqj.rabbitmq.demo.rabbitclient.RabbitBuilder;
 
 /**
  * Created by yaoqijun.
@@ -16,21 +17,22 @@ public class Send {
 
     public static void main(String[] args) throws Exception{
 
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("localhost");
-        connectionFactory.setPort(5672);
+        ConnectionFactory connectionFactory = RabbitBuilder.buildConnectionFactory();
         Connection connection = connectionFactory.newConnection();
+
+        // create single channel
         Channel channel = connection.createChannel();
 
-        // create queue
+        // declare queue name
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-        // send message
-        String message = "hello world";
-        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-        System.out.println("finish to publish message : " + message);
+        String message = "hello yao qi jun";
+        for (int i = 0; i < 5; i++) {
+            channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
+            Thread.sleep(10000);
+        }
+        System.out.println(" [X] has send message ");
 
-        // close
         channel.close();
         connection.close();
     }
