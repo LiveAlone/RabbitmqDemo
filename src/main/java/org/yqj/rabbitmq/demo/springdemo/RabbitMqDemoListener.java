@@ -19,12 +19,6 @@ public class RabbitMqDemoListener {
 
         // set up the queue, exchange, binding on the broker
         RabbitAdmin admin = new RabbitAdmin(cf);
-        Queue queue = new Queue("myQueue2");
-        admin.declareQueue(queue);
-        TopicExchange exchange = new TopicExchange("myExchange2");
-        admin.declareExchange(exchange);
-        admin.declareBinding(
-                BindingBuilder.bind(queue).to(exchange).with("foo.*"));
 
         // set up the listener and container
         SimpleMessageListenerContainer container =
@@ -36,7 +30,7 @@ public class RabbitMqDemoListener {
         };
         MessageListenerAdapter adapter = new MessageListenerAdapter(listener);
         container.setMessageListener(adapter);
-        container.setQueueNames("myQueue2");
+        container.setQueueNames("myQueue4");
         container.start();
 
         Thread.sleep(1000000);

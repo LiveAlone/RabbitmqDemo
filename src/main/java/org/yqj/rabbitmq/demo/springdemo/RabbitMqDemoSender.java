@@ -19,16 +19,16 @@ public class RabbitMqDemoSender {
 
         // set up the queue, exchange, binding on the broker
         RabbitAdmin admin = new RabbitAdmin(cf);
-        Queue queue = new Queue("myQueue2");
+        Queue queue = new Queue("myQueue4");
         admin.declareQueue(queue);
-        TopicExchange exchange = new TopicExchange("myExchange2");
+        TopicExchange exchange = new TopicExchange("myExchange4", true, true);
         admin.declareExchange(exchange);
         admin.declareBinding(
                 BindingBuilder.bind(queue).to(exchange).with("foo.*"));
         // send something
         RabbitTemplate template = new RabbitTemplate(cf);
         for (int i = 0; i < 10; i++) {
-            template.convertAndSend("myExchange2", "foo.bar", "Hello, yao qi jun!");
+            template.convertAndSend("myExchange4", "foo.bar", "Hello, yao qi jun!");
         }
     }
 
