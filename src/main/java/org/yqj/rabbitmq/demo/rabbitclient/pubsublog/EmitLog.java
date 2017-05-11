@@ -21,7 +21,7 @@ public class EmitLog {
         Channel channel = connection.createChannel();
 
         // declare exchange
-        channel.exchangeDeclare(EXCHANGE_NAME, FANOUT);
+//        channel.exchangeDeclare(EXCHANGE_NAME, FANOUT);
 
         for (int i=0; i<10; i++){
             String message = "log messge " + i;

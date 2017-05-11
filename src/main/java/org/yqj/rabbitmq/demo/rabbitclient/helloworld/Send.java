@@ -26,10 +26,10 @@ public class Send {
         // declare queue name
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-        String message = "hello yao qi jun";
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 20; i++) {
+            String message = "hello yao qi jun" + i;
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         }
         System.out.println(" [X] has send message ");
 
