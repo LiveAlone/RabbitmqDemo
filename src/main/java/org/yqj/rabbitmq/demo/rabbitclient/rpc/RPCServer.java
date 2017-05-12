@@ -21,7 +21,7 @@ public class RPCServer {
         return fib(n-1) + fib(n-2);
     }
 
-    public static void main(String[] argv) {
+    public static void Main(String[] argv) {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 

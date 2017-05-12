@@ -14,7 +14,7 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
  * Created by yaoqijun on 2017/5/10.
  */
 public class RabbitMqDemoSender {
-    public static void main(String[] args) throws Exception {
+    public static void Main(String[] args) throws Exception {
         // connection factory create
         ConnectionFactory cf = buildConnectionFactory();
 

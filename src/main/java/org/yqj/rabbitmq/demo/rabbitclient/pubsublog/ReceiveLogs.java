@@ -20,7 +20,7 @@ public class ReceiveLogs {
 
     private static final String EXCHANGE_NAME = "logs";
 
-    public static void main(String[] argv) throws Exception {
+    public static void Main(String[] argv) throws Exception {
 
         String QUEUE_NAME = "log_queue_2";
 

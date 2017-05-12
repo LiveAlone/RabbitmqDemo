@@ -15,7 +15,7 @@ public class EmitLog {
 
     private static final String EXCHANGE_NAME = "logs";
 
-    public static void main(String[] args) throws Exception{
+    public static void Main(String[] args) throws Exception{
         ConnectionFactory connectionFactory = RabbitBuilder.buildConnectionFactory();
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();

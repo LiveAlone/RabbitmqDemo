@@ -15,7 +15,7 @@ public class Send {
 
     private static final String QUEUE_NAME = "hello";
 
-    public static void main(String[] args) throws Exception{
+    public static void Main(String[] args) throws Exception{
 
         ConnectionFactory connectionFactory = RabbitBuilder.buildConnectionFactory();
         Connection connection = connectionFactory.newConnection();

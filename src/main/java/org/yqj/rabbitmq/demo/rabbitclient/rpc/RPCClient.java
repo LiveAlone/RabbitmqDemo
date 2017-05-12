@@ -59,7 +59,7 @@ public class RPCClient {
         connection.close();
     }
 
-    public static void main(String[] argv) {
+    public static void Main(String[] argv) {
         RPCClient fibonacciRpc = null;
         String response = null;
         try {

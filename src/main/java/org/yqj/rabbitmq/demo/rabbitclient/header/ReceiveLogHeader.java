@@ -7,6 +7,6 @@ public class ReceiveLogHeader {
 
     private static final String EXCHANGE_NAME = "header_test";
 
-    public static void main(String[] args) throws Exception{
+    public static void Main(String[] args) throws Exception{
     }
 }

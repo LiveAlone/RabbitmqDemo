@@ -24,7 +24,7 @@ public class ReceiveLogsTopic {
 
     private static final String TOPIC_QI = "qi.#";
 
-    public static void main(String[] args) throws Exception{
+    public static void Main(String[] args) throws Exception{
 
         String bindingKey = TOPIC_YAO;
 

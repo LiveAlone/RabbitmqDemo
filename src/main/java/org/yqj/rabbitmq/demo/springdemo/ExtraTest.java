@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by yaoqijun on 2017-05-11.
  */
 public class ExtraTest {
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
         Person person = new Person("yaoqijun", 12);
         String s = new String(SerializationUtils.serialize(person));
         System.out.println(s);

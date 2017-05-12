@@ -25,7 +25,7 @@ public class ReceiveLogDirect {
 
     private static final String INFO_ROUTE = "info_queue";
 
-    public static void main(String[] argv) throws Exception {
+    public static void Main(String[] argv) throws Exception {
 
         String routeKey = INFO_ROUTE;
 
