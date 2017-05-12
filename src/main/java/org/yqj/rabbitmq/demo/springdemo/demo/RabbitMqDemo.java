@@ -1,4 +1,4 @@
-package org.yqj.rabbitmq.demo.springdemo;
+package org.yqj.rabbitmq.demo.springdemo.demo;
 
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;

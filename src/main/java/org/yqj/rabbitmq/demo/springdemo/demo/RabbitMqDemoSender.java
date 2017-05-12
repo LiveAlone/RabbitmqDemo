@@ -1,4 +1,4 @@
-package org.yqj.rabbitmq.demo.springdemo;
+package org.yqj.rabbitmq.demo.springdemo.demo;
 
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -13,30 +13,32 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 /**
  * Created by yaoqijun on 2017/5/10.
  */
-public class RabbitMqDemoListener {
+public class RabbitMqDemoSender {
     public static void main(String[] args) throws Exception {
+        // connection factory create
         ConnectionFactory cf = buildConnectionFactory();
 
         // set up the queue, exchange, binding on the broker
         RabbitAdmin admin = new RabbitAdmin(cf);
 
-        // set up the listener and container
-        SimpleMessageListenerContainer container =
-                new SimpleMessageListenerContainer(cf);
-        Object listener = new Object() {
-            public void handleMessage(String foo) {
-                System.out.println(foo);
-            }
-        };
-        MessageListenerAdapter adapter = new MessageListenerAdapter(listener);
-        container.setMessageListener(adapter);
-        container.setQueueNames("myQueue4");
-        container.start();
+        // create queue
+        Queue queue = new Queue("myQueue4");
+        admin.declareQueue(queue);
 
-        Thread.sleep(1000000);
-        container.stop();
+        // exchange
+        TopicExchange exchange = new TopicExchange("myExchange4", true, true);
+        admin.declareExchange(exchange);
+
+        // bind
+        admin.declareBinding(
+                BindingBuilder.bind(queue).to(exchange).with("foo.*"));
+
+        // send something
+        RabbitTemplate template = new RabbitTemplate(cf);
+        for (int i = 0; i < 10; i++) {
+            template.convertAndSend("myExchange4", "foo.bar", "Hello, yao qi jun!");
+        }
     }
-
 
     private static ConnectionFactory buildConnectionFactory(){
         com.rabbitmq.client.ConnectionFactory cf = new com.rabbitmq.client.ConnectionFactory();
